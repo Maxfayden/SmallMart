@@ -5,16 +5,27 @@
  */
 package br.com.telas;
 
+import br.com.smartmall.Controle_de_Fornecedor;
+import br.com.smartmall.Endereco;
+import br.com.smartmall.Fornecedor;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
- * @author tawanna
+ * @author Thejotta
  */
 public class TCadastrarFornecedor extends javax.swing.JFrame {
-
+     private Fornecedor fornecedor;
+     private Endereco endereco;
+     private Controle_de_Fornecedor cfornecedor;
     /**
-     * Creates new form TCadastrarFornecedor
+     * Creates new form NewJFrame
      */
     public TCadastrarFornecedor() {
+        fornecedor=new Fornecedor();
+        endereco=new Endereco();
+        cfornecedor=new Controle_de_Fornecedor();
         initComponents();
     }
 
@@ -35,14 +46,12 @@ public class TCadastrarFornecedor extends javax.swing.JFrame {
         TCNPJFor = new javax.swing.JTextField();
         TTelefoneFor = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        TRuaFor = new javax.swing.JTextField();
         TBairroFor = new javax.swing.JTextField();
         TCEPFor = new javax.swing.JTextField();
         TNunFor = new javax.swing.JTextField();
@@ -53,15 +62,15 @@ public class TCadastrarFornecedor extends javax.swing.JFrame {
         BCancFor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cadastrar Fornecedor");
+        setTitle("Cadastro de fornecedor");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do fornecedor"));
 
-        jLabel1.setText("Nome:");
+        jLabel1.setText("Nome: *");
 
-        jLabel2.setText("CNPJ:");
+        jLabel2.setText("CNPJ: *");
 
-        jLabel3.setText("Telefone:");
+        jLabel3.setText("Telefone: *");
 
         TNomeFor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,22 +122,20 @@ public class TCadastrarFornecedor extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(TTelefoneFor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
 
-        jLabel7.setText("Rua:");
+        jLabel8.setText("Bairro: *");
 
-        jLabel8.setText("Bairro:");
+        jLabel9.setText("Cidade: *");
 
-        jLabel9.setText("Cidade:");
+        jLabel10.setText("CEP: *");
 
-        jLabel10.setText("CEP:");
+        jLabel11.setText("Numero: *");
 
-        jLabel11.setText("Nº");
-
-        jLabel12.setText("Logradorou:");
+        jLabel12.setText("Logradouro: *");
 
         jLabel13.setText("Complemento:");
 
@@ -143,44 +150,39 @@ public class TCadastrarFornecedor extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
                             .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(TCEPFor, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(TBairroFor))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TNunFor, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TCEPFor, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TBairroFor, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TCidadeFor)))
+                                .addComponent(TNunFor, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(TCidadeFor))
                         .addContainerGap())
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(TRuaFor, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel13)
-                                    .addComponent(jLabel12))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TCompFor)
-                                    .addComponent(TLogFor))))
-                        .addGap(10, 10, 10))))
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TCompFor)
+                        .addGap(10, 10, 10))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TLogFor)
+                        .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(TRuaFor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel12)
+                    .addComponent(TLogFor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -197,45 +199,54 @@ public class TCadastrarFornecedor extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(TCompFor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(TLogFor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26))
         );
 
         BCadasFor.setText("Cadastrar");
+        BCadasFor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BCadasForActionPerformed(evt);
+            }
+        });
 
         BCancFor.setText("Cancelar");
+        BCancFor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BCancForActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(16, 16, 16))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(BCadasFor)
-                        .addGap(56, 56, 56)
-                        .addComponent(BCancFor)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(115, 115, 115)
+                .addComponent(BCadasFor)
+                .addGap(18, 18, 18)
+                .addComponent(BCancFor)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BCadasFor)
-                    .addComponent(BCancFor))
+                    .addComponent(BCancFor)
+                    .addComponent(BCadasFor))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -253,6 +264,63 @@ public class TCadastrarFornecedor extends javax.swing.JFrame {
     private void TTelefoneForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TTelefoneForActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TTelefoneForActionPerformed
+
+    //função para verificar se existe algum campo vazio
+    private boolean vazio(){
+    
+        return (TCEPFor.getText().isEmpty()     ||  TBairroFor.getText().isEmpty()  ||
+                TCidadeFor.getText().isEmpty()  ||  TLogFor.getText().isEmpty()     ||
+                TNunFor.getText().isEmpty()     ||  TNomeFor.getText().isEmpty()    ||
+                TCNPJFor.getText().isEmpty()    ||  TTelefoneFor.getText().isEmpty());
+    }
+    
+    //Função para limpar todos os campos do formulario
+    private void LimparJtextfild(){
+        TCEPFor.setText("");
+        TBairroFor.setText("");
+        TCidadeFor.setText("");
+        TLogFor.setText("");
+        TNunFor.setText("");
+        TCompFor.setText("");
+        TNomeFor.setText("");
+        TCNPJFor.setText("");
+        TTelefoneFor.setText("");
+        TCompFor.setText("");
+    }
+    private void BCadasForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCadasForActionPerformed
+        
+      if(!vazio()){  
+        //Obtendo valores dos textfild referente a endereço
+        endereco.setCep(TCEPFor.getText());
+        endereco.setBairro(TBairroFor.getText());
+        endereco.setCidade(TCidadeFor.getText());
+        endereco.setLongadouro(TLogFor.getText());
+        endereco.setNumero(TNunFor.getText());
+        endereco.setComplemento(TCompFor.getText());
+        
+        //Obtendo valores dos textfild referente a fornecedor
+        fornecedor.setNome_fornecedor(TNomeFor.getText());
+        fornecedor.setCnpj(TCNPJFor.getText());
+        fornecedor.setTelefone(TTelefoneFor.getText());
+        fornecedor.setEndereco(endereco);
+        
+        cfornecedor.setEndereco(endereco);
+        cfornecedor.setFornecedor(fornecedor);
+        
+        if(!cfornecedor.cadastrarEndereco() && !cfornecedor.cadastrarFornecedor()){
+          JOptionPane.showMessageDialog(null, "Fornecedor cadastrado com sucesso!!"); 
+          LimparJtextfild();
+        } 
+     }else
+      {
+      JOptionPane.showMessageDialog(null, "Você deve preencher os campos com '*'");
+      }
+    }//GEN-LAST:event_BCadasForActionPerformed
+
+    private void BCancForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCancForActionPerformed
+        //Fechando form
+        this.dispose();
+    }//GEN-LAST:event_BCancForActionPerformed
 
     /**
      * @param args the command line arguments
@@ -280,6 +348,7 @@ public class TCadastrarFornecedor extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(TCadastrarFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -300,7 +369,6 @@ public class TCadastrarFornecedor extends javax.swing.JFrame {
     private javax.swing.JTextField TLogFor;
     private javax.swing.JTextField TNomeFor;
     private javax.swing.JTextField TNunFor;
-    private javax.swing.JTextField TRuaFor;
     private javax.swing.JTextField TTelefoneFor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -309,7 +377,6 @@ public class TCadastrarFornecedor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
