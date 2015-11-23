@@ -2,7 +2,6 @@ package br.com.smartmall;
 
 public class Endereco {
 	private int idEndereco;
-	private String rua;
 	private String bairro;
 	private String numero;
 	private String complemento;
@@ -24,12 +23,7 @@ public class Endereco {
 	public void setIdEndereco(int idEndereco) {
 		this.idEndereco = idEndereco;
 	}
-	public String getRua() {
-		return rua;
-	}
-	public void setRua(String rua) {
-		this.rua = rua;
-	}
+	
 	public String getBairro() {
 		return bairro;
 	}
