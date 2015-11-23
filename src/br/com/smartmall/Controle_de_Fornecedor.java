@@ -1,36 +1,62 @@
 package br.com.smartmall;
 
+import java.util.List;
+
 public class Controle_de_Fornecedor {
 
 	private Fornecedor fornecedor;
-	private Compra compra;
-	
+	private FornecedorDao fornecedordao;
+        private EnderecoDao enderecodao;
+        
+        //Construtor
+        public Controle_de_Fornecedor() {
+            fornecedor = new Fornecedor();
+            fornecedordao = new FornecedorDao();
+            enderecodao = new EnderecoDao();
+        }
+        
 	public Fornecedor getFornecedor() {
-		return fornecedor;
+	    return fornecedor;
 	}
 	public void setFornecedor(Fornecedor fornecedor) {
-		this.fornecedor = fornecedor;
-	}
-	public Compra getCompra() {
-		return compra;
-	}
-	public void setCompra(Compra compra) {
-		this.compra = compra;
-	}
-	public String cadastrarFornecedor(Fornecedor fornecedor){
-		return null;
-	}
-	public String atualizarFornecedor(Fornecedor fornecedor){
-		return null;
+	    this.fornecedor = fornecedor;
 	}
 	
-	public String pesquisarFornecedor(Fornecedor fornecedor){
-		return null;
+        public Endereco getEndereco() {
+	    return fornecedor.getEndereco();
 	}
-	public String excluirFornecedor(Fornecedor fornecedor){
-		return null;
+	public void setEndereco(Endereco endereco) {
+	    this.fornecedor.setEndereco(endereco);
 	}
-	public void gerarRelatorioDeCompra(Fornecedor fornecedor){
-		
+        
+	public boolean cadastrarFornecedor(Fornecedor fornecedor){
+            return fornecedordao.add(fornecedor);
 	}
+	public boolean atualizarFornecedor(Fornecedor fornecedor){
+	    return fornecedordao.update(fornecedor);
+	}
+	
+	public List<Fornecedor> pesquisarFornecedor(Fornecedor fornecedor){
+            return fornecedordao.pesquisar(fornecedor.getCnpj());
+	}
+	public boolean excluirFornecedor(Fornecedor fornecedor){
+	    return fornecedordao.remove(fornecedor.getCnpj());
+	}
+        
+        public boolean cadastrarEndereco(){
+            return enderecodao.add(fornecedor.getEndereco());
+        }
+        
+        public boolean atualizarEndereco(){
+        return enderecodao.update(fornecedor.getEndereco());
+        }
+        
+        public List<Endereco> pesquisarEndereco(){
+            return enderecodao.pesquisar(fornecedor.getEndereco().getIdEndereco());
+	}
+        
+        public boolean excluirEndereco(){
+        return enderecodao.remove(fornecedor.getEndereco().getIdEndereco());
+        }
+	
 }
