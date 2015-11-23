@@ -18,9 +18,9 @@ public class FuncionarioDao {
 			+ "where cpf=?";
 	
 	private static final String PESQUISAR = "select cpf,nome,login,senha,telefone,gerente,"
-			+ "endere�o.longradouro,endere�o.bairro,endere�o.numero,endere�o.complemento,"
-			+ "endere�o.cep,endere�o.cidade,venda.idVenda "
-			+ "from funcionario inner join endere�o "
+			+ "Endereço.longradouro,Endereço.bairro,Endereço.numero,Endereço.complemento,"
+			+ "Endereço.cep,Endereço.cidade,venda.idVenda "
+			+ "from funcionario inner join Endereço "
 			+ "on funcionario.Endereço_idEndereço = idEndereço "
 			+ "inner join Venda on funcionario.Venda_idVenda = idVenda where cpf = ?";
 	
@@ -102,7 +102,6 @@ public class FuncionarioDao {
 				funcionario.setTelefone(rs.getString("telefone"));
 				
 				endereco.setLongadouro(rs.getString("longradouro"));
-				endereco.setRua(rs.getString("rua"));
 				endereco.setNumero(rs.getString("numero"));
 				endereco.setBairro(rs.getString("bairro"));
 				endereco.setCep(rs.getString("cep"));
