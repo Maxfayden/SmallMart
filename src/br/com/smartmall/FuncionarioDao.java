@@ -10,7 +10,7 @@ import java.util.List;
 
 public class FuncionarioDao {
 	private static final String INSERT = "insert into Funcionario"
-            + "(cpf,nome,login,senha,telefone,Endereço_idEndereço,gerente,Venda_idVenda)" 
+            + "(cpf,nome,login,senha,telefone,EndereÃ§o_idEndereÃ§o,gerente,Venda_idVenda)" 
 			+ "(?,?,?,?,?,?,?,?)";
 	
 	private static final String UPDATE = "update Funcionario set" 
@@ -18,10 +18,10 @@ public class FuncionarioDao {
 			+ "where cpf=?";
 	
 	private static final String PESQUISAR = "select cpf,nome,login,senha,telefone,gerente,"
-			+ "endereço.longradouro,endereço.bairro,endereço.numero,endereço.complemento,"
-			+ "endereço.cep,endereço.cidade,venda.idVenda "
-			+ "from funcionario inner join endereço "
-			+ "on funcionario.Endereço_idEndereço = idEndereço "
+			+ "endereï¿½o.longradouro,endereï¿½o.bairro,endereï¿½o.numero,endereï¿½o.complemento,"
+			+ "endereï¿½o.cep,endereï¿½o.cidade,venda.idVenda "
+			+ "from funcionario inner join endereï¿½o "
+			+ "on funcionario.EndereÃ§o_idEndereÃ§o = idEndereÃ§o "
 			+ "inner join Venda on funcionario.Venda_idVenda = idVenda where cpf = ?";
 	
 	private static final String DELETE = "delete from Funcionario where cpf=?";
