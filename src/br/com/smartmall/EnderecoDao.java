@@ -8,18 +8,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EnderecoDao {
-	private static final String INSERT = "insert into Endereço" 
+	private static final String INSERT = "insert into EndereÃ§o" 
               + "(longradouro,bairro,numero,complemento,cep,cidade)"
 			  + "values (?,?,?,?,?,?)";
 	
-	private static final String UPDATE = "update Endereço set"
+	private static final String UPDATE = "update Endereï¿½o set"
 			  + "longradouro=?, bairro=?, numero=?, complemento=?, cep=?, cidade=?"
-			  + "where idEndereço =?";
+			  + "where idEndereÃ§o =?";
 	
-	private static final String PESQUISAR = "select * from Endereço" 
-	                                               + "where idEndereço=?";
+	private static final String PESQUISAR = "select * from EndereÃ§o" 
+	                                               + "where idEndereÃ§o=?";
 	
-	private static final String DELETE = "delete from Endereco where iEndereço=?";
+	private static final String DELETE = "delete from Endereco where iEndereÃ§o=?";
 	
 	private Connection con;
 	
@@ -43,7 +43,7 @@ public class EnderecoDao {
 			stmt.close();
 			
 		} catch (SQLException e) {
-			throw new RuntimeException(e);
+    			throw new RuntimeException(e);
 			
 		}finally{
 			ConnectionFactory.closeConnection(con);
