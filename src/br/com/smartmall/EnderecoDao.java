@@ -20,7 +20,7 @@ public class EnderecoDao {
 	private static final String PESQUISAR = "select * from Endereço" 
 	                                               + "where idEndereço=?";
 	
-	private static final String DELETE = "delete from Endereço where iEndereço=?";
+	private static final String DELETE = "delete from Endereço where idEndereço=?";
 	
 	private Connection con;
 	
