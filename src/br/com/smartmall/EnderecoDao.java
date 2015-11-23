@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class EnderecoDao {
 	public boolean add(Endereco endereco){
 		boolean inserido = false;
 		try {
-			PreparedStatement stmt = con.prepareStatement(INSERT);
+			PreparedStatement stmt = con.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, endereco.getLongadouro());
 			stmt.setString(2, endereco.getBairro());
 			stmt.setString(3, endereco.getNumero());
@@ -40,6 +41,13 @@ public class EnderecoDao {
 			stmt.setString(6, endereco.getCidade());
 			
 			inserido = stmt.execute();
+                        
+                        //Obtendo ultimo id 
+                        ResultSet rs = stmt.getGeneratedKeys();  
+                        rs.next();  
+                        int id =(int)rs.getLong(1); 
+                        endereco.setIdEndereco(id);
+                        
 			stmt.close();
 			
 		} catch (SQLException e) {
