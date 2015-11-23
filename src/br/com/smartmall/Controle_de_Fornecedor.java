@@ -29,17 +29,17 @@ public class Controle_de_Fornecedor {
 	    this.fornecedor.setEndereco(endereco);
 	}
         
-	public boolean cadastrarFornecedor(Fornecedor fornecedor){
+	public boolean cadastrarFornecedor(){
             return fornecedordao.add(fornecedor);
 	}
-	public boolean atualizarFornecedor(Fornecedor fornecedor){
+	public boolean atualizarFornecedor(){
 	    return fornecedordao.update(fornecedor);
 	}
 	
-	public List<Fornecedor> pesquisarFornecedor(Fornecedor fornecedor){
+	public List<Fornecedor> pesquisarFornecedor(){
             return fornecedordao.pesquisar(fornecedor.getCnpj());
 	}
-	public boolean excluirFornecedor(Fornecedor fornecedor){
+	public boolean excluirFornecedor(){
 	    return fornecedordao.remove(fornecedor.getCnpj());
 	}
         
