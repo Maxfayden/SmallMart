@@ -9,7 +9,7 @@ import java.util.List;
 
 public class FornecedorDao {
 	private static final String INSERT = "insert into Fornecedor" 
-            + "(cnpj,nome,telefone,Endereço_idEndereço)" 
+            + "(cnpj,nome,telefone,EndereÃ§o_idEndereÃ§o)" 
 		    + "values (?,?,?,?)";
 	
 	private static final String UPDATE = "update Fornecedor set" 
@@ -17,10 +17,10 @@ public class FornecedorDao {
 			     + "where cnpj=?";
 	
 	private static final String PESQUISAR = "select nome,cnpj,telefone,"
-	    + "endereço.longradouro,endereço.bairro,endereço.numero,"
-	    + "endereço.complemento,endereço.cep,endereço.cidade "
-	    + "from fornecedor inner join endereço "
-	    + "on Endereço_idEndereço = idEndereço where cnpj=?";
+	    + "endereÃ§o.longradouro,endereÃ§o.bairro,endereÃ§o.numero,"
+	    + "endereÃ§o.complemento,endereÃ§o.cep,endereÃ§o.cidade "
+	    + "from fornecedor inner join endereÃ§o "
+	    + "on EndereÃ§o_idEndereÃ§o = idEndereÃ§o where cnpj=?";
 	
 	private static final String DELETE = "delete from Fornecedor where cnpj=?";
 	private static final String PESQUISA_CNPJ = "select * from Fornecedor where cnpj = ?";
@@ -88,7 +88,7 @@ public class FornecedorDao {
 				fornecedor.setCnpj(rs.getString("cnpj"));
 				fornecedor.setNome_fornecedor(rs.getString("nome"));
 				fornecedor.setTelefone(rs.getString("telefone"));
-				fornecedor.setEndereco(new Endereco(rs.getInt("Endereço_idEndereço")));
+				fornecedor.setEndereco(new Endereco(rs.getInt("EndereÃ§o_idEndereÃ§o")));
 				
 				fornecedores.add(fornecedor);
 			}
