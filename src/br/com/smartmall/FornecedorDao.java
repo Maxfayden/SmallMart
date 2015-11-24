@@ -12,8 +12,8 @@ public class FornecedorDao {
             + "(cnpj,nome,telefone,Endereço_idEndereço)" 
 		    + "values (?,?,?,?)";
 	
-	private static final String UPDATE = "update Fornecedor set" 
-	             + "cnpj=?,nome=?,telefone=?" 
+	private static final String UPDATE = "update Fornecedor set " 
+	             + "cnpj=?,nome=?,telefone=? " 
 			     + "where cnpj=?";
 	
 	private static final String PESQUISAR = "select * from Fornecedor where cnpj=?";
