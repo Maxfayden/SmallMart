@@ -16,11 +16,7 @@ public class FornecedorDao {
 	             + "cnpj=?,nome=?,telefone=?" 
 			     + "where cnpj=?";
 	
-	private static final String PESQUISAR = "select nome,cnpj,telefone,"
-	    + "endereço.longradouro,endereço.bairro,endereço.numero,"
-	    + "endereço.complemento,endereço.cep,endereço.cidade "
-	    + "from fornecedor inner join endereço "
-	    + "on Endereço_idEndereço = idEndereço where cnpj=?";
+	private static final String PESQUISAR = "select * from Fornecedor where cnpj=?";
 	
 	private static final String DELETE = "delete from Fornecedor where cnpj=?";
 	private static final String PESQUISA_CNPJ = "select * from Fornecedor where cnpj = ?";
@@ -77,7 +73,7 @@ public class FornecedorDao {
 	public List<Fornecedor> pesquisar(String cnpj){
 		
 		try{
-			List<Fornecedor> fornecedores = new ArrayList<Fornecedor>();
+			List<Fornecedor> fornecedores = new ArrayList();
 			PreparedStatement stmt = con.prepareStatement(PESQUISAR);
 			stmt.setString(1, cnpj);
 			
@@ -89,7 +85,6 @@ public class FornecedorDao {
 				fornecedor.setNome_fornecedor(rs.getString("nome"));
 				fornecedor.setTelefone(rs.getString("telefone"));
 				fornecedor.setEndereco(new Endereco(rs.getInt("Endereço_idEndereço")));
-				
 				fornecedores.add(fornecedor);
 			}
 			
