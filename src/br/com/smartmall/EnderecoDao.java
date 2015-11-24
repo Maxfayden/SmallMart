@@ -13,8 +13,8 @@ public class EnderecoDao {
               + "(longradouro,bairro,numero,complemento,cep,cidade)"
 			  + "values (?,?,?,?,?,?)";
 	
-	private static final String UPDATE = "update Endereço set"
-			  + "longradouro=?, bairro=?, numero=?, complemento=?, cep=?, cidade=?"
+	private static final String UPDATE = "update Endereço set "
+			  + "longradouro=?, bairro=?, numero=?, complemento=?, cep=?, cidade=? "
 			  + "where idEndereço =?";
 	
 	private static final String PESQUISAR = "select * from Endereço where idEndereço=?";
