@@ -139,6 +139,12 @@ public class TCadastrarFornecedor extends javax.swing.JFrame {
 
         jLabel13.setText("Complemento:");
 
+        TCEPFor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TCEPForKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -201,6 +207,8 @@ public class TCadastrarFornecedor extends javax.swing.JFrame {
                     .addComponent(TCompFor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
         );
+
+        TCEPFor.getAccessibleContext().setAccessibleDescription("");
 
         BCadasFor.setText("Cadastrar");
         BCadasFor.addActionListener(new java.awt.event.ActionListener() {
@@ -321,6 +329,22 @@ public class TCadastrarFornecedor extends javax.swing.JFrame {
         //Fechando form
         this.dispose();
     }//GEN-LAST:event_BCancForActionPerformed
+
+    private void TCEPForKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCEPForKeyTyped
+       
+        String caracteres="0987654321";
+        //permitindo só numeros
+        if(!caracteres.contains(evt.getKeyChar()+"")){
+            evt.consume();
+        } 
+        
+        //tamanho maximo de caractres
+        if((TCEPFor.getText().length()>=8)&&(8!=-1)){ 
+            evt.consume(); 
+            TCEPFor.setText(TCEPFor.getText().substring(0,8)); 
+        }
+        
+    }//GEN-LAST:event_TCEPForKeyTyped
 
     /**
      * @param args the command line arguments
