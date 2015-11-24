@@ -8,7 +8,6 @@ package br.com.telas;
 import br.com.smartmall.Controle_de_Fornecedor;
 import br.com.smartmall.Endereco;
 import br.com.smartmall.Fornecedor;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
