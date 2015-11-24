@@ -83,6 +83,11 @@ public class TCadastrarFornecedor extends javax.swing.JFrame {
                 TCNPJForActionPerformed(evt);
             }
         });
+        TCNPJFor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TCNPJForKeyTyped(evt);
+            }
+        });
 
         TTelefoneFor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -345,6 +350,20 @@ public class TCadastrarFornecedor extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_TCEPForKeyTyped
+
+    private void TCNPJForKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCNPJForKeyTyped
+         String caracteres="0987654321";
+        //permitindo só numeros
+        if(!caracteres.contains(evt.getKeyChar()+"")){
+            evt.consume();
+        } 
+        
+        //tamanho maximo de caractres
+        if((TCEPFor.getText().length()>=14)&&(14!=-1)){ 
+            evt.consume(); 
+            TCEPFor.setText(TCEPFor.getText().substring(0,14)); 
+        }
+    }//GEN-LAST:event_TCNPJForKeyTyped
 
     /**
      * @param args the command line arguments
