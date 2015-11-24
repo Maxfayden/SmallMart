@@ -5,16 +5,29 @@
  */
 package br.com.telas;
 
+import br.com.smartmall.Controle_de_Fornecedor;
+import br.com.smartmall.Endereco;
+import br.com.smartmall.Fornecedor;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author tawanna
  */
 public class TPesquisarFornecedor extends javax.swing.JFrame {
-
+     private Fornecedor fornecedor;
+     private Endereco endereco;
+     private Controle_de_Fornecedor cfornecedor;
+     private TCadastrarFornecedor tcfornecedor;
     /**
      * Creates new form TPesquisarFornecedor
      */
     public TPesquisarFornecedor() {
+        fornecedor=new Fornecedor();
+        endereco=new Endereco();
+        tcfornecedor= new TCadastrarFornecedor();
         initComponents();
     }
 
@@ -32,12 +45,17 @@ public class TPesquisarFornecedor extends javax.swing.JFrame {
         BCancPesfor = new javax.swing.JButton();
         TCNPJPesqFor = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pesquisar Fornecedor");
 
         jLabel1.setText("CNPJ:");
 
         BPesFor.setText("Pesquisar");
+        BPesFor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BPesForActionPerformed(evt);
+            }
+        });
 
         BCancPesfor.setText("Cancelar");
         BCancPesfor.addActionListener(new java.awt.event.ActionListener() {
@@ -49,6 +67,11 @@ public class TPesquisarFornecedor extends javax.swing.JFrame {
         TCNPJPesqFor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TCNPJPesqForActionPerformed(evt);
+            }
+        });
+        TCNPJPesqFor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TCNPJPesqForKeyTyped(evt);
             }
         });
 
@@ -87,12 +110,60 @@ public class TPesquisarFornecedor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BCancPesforActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCancPesforActionPerformed
-        // TODO add your handling code here:
+        //Fechando form
+        this.dispose();
     }//GEN-LAST:event_BCancPesforActionPerformed
 
     private void TCNPJPesqForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TCNPJPesqForActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TCNPJPesqForActionPerformed
+
+    private void BPesForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BPesForActionPerformed
+       cfornecedor=new Controle_de_Fornecedor();
+        
+       //verificando se o fornecedor existe no banco de dados
+       if(cfornecedor.VerificarExistenciaFornecedor(TCNPJPesqFor.getText())){
+        //fazendo pesquisa do fornecedor
+        cfornecedor=new Controle_de_Fornecedor();
+        
+        //obtendo os dados do fornecedor
+        List<Fornecedor> Lfornecedor = cfornecedor.pesquisarFornecedor(TCNPJPesqFor.getText());
+        fornecedor=Lfornecedor.get(0);
+        cfornecedor.setFornecedor(fornecedor);
+        
+        //obtendo o endereço do fornecedor
+        List<Endereco> Lendereco =cfornecedor.pesquisarEndereco();
+        endereco=Lendereco.get(0);
+        cfornecedor.setEndereco(endereco);
+        
+        //preenchendo textfild da outra tela com os dados do fornecedor
+        tcfornecedor.setTextfild(fornecedor);
+        
+        //Chamando outra tela
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                tcfornecedor.setVisible(true);
+                }
+        });
+        
+        //fechando tela atual
+        this.dispose();
+       }else//mensagem de erro caso o fornecedor não exita
+           JOptionPane.showMessageDialog(null, "Fornecedor não encontrado!!");
+    }//GEN-LAST:event_BPesForActionPerformed
+
+    private void TCNPJPesqForKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCNPJPesqForKeyTyped
+      String caracteres="0987654321";
+        //permitindo só numeros
+        if(!caracteres.contains(evt.getKeyChar()+"")){
+            evt.consume();
+        } 
+        //tamanho maximo de caractres
+        if((TCNPJPesqFor.getText().length()>=14)&&(14!=-1)){ 
+            evt.consume(); 
+            TCNPJPesqFor.setText(TCNPJPesqFor.getText().substring(0,14)); 
+        }
+    }//GEN-LAST:event_TCNPJPesqForKeyTyped
 
     /**
      * @param args the command line arguments
