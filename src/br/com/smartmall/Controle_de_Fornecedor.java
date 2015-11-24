@@ -39,6 +39,9 @@ public class Controle_de_Fornecedor {
 	public List<Fornecedor> pesquisarFornecedor(String cnpj){
             return fornecedordao.pesquisar(cnpj);
 	}
+        public boolean VerificarExistenciaFornecedor(String cnpj){
+            return fornecedordao.pesquisaCNPJ(cnpj);
+	}
 	public boolean excluirFornecedor(){
 	    return fornecedordao.remove(fornecedor.getCnpj());
 	}
