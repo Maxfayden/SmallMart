@@ -492,6 +492,11 @@ public class TFornecedor extends javax.swing.JFrame {
         );
 
         BAtualizarFor.setText("Atualizar");
+        BAtualizarFor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BAtualizarForActionPerformed(evt);
+            }
+        });
 
         BExcluirFor.setText("Excluir");
 
@@ -757,6 +762,30 @@ public class TFornecedor extends javax.swing.JFrame {
         //Fechando form
         this.dispose();
     }//GEN-LAST:event_BCancFor2ActionPerformed
+
+    private void BAtualizarForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAtualizarForActionPerformed
+            cfornecedor=new Controle_de_Fornecedor();
+        //Obtendo valores dos textfild referente a endereço
+            endereco.setCep(TCEPFor1.getText());
+            endereco.setBairro(TBairroFor1.getText());
+            endereco.setCidade(TCidadeFor1.getText());
+            endereco.setLongadouro(TLogFor1.getText());
+            endereco.setNumero(TNunFor1.getText());
+            endereco.setComplemento(TCompFor1.getText());
+
+            //Obtendo valores dos textfild referente a fornecedor
+            fornecedor.setNome_fornecedor(TNomeFor1.getText());
+            fornecedor.setCnpj(TCNPJFor1.getText());
+            fornecedor.setTelefone(TTelefoneFor1.getText());
+            fornecedor.setEndereco(endereco);
+        
+            cfornecedor.setFornecedor(fornecedor);
+            cfornecedor.setEndereco(endereco);
+            
+            cfornecedor.atualizarFornecedor();
+            cfornecedor.atualizarEndereco();
+            JOptionPane.showMessageDialog(null, "Fornecedor alterado com sucesso!!");
+    }//GEN-LAST:event_BAtualizarForActionPerformed
 
     /**
      * @param args the command line arguments
