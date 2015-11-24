@@ -99,6 +99,7 @@ public class EnderecoDao {
 				endereco.setComplemento(rs.getString("complemento"));
 				endereco.setCep(rs.getString("cep"));
 				endereco.setCidade(rs.getString("cidade"));
+                                endereco.setIdEndereco(idEndereco);
 				enderecos.add(endereco);
 			}
 			rs.close();
