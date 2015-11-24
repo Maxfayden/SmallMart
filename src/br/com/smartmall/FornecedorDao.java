@@ -127,9 +127,7 @@ public class FornecedorDao {
 			stmt.setString(1, cnpj);
 			
 			ResultSet rs = stmt.executeQuery();
-			
-			
-				if(rs.next()){
+			if(rs.next()){
 					encontrado = true;
 				}
 			
