@@ -61,7 +61,7 @@ public class TCadastrarFornecedor extends javax.swing.JFrame {
         BCadasFor = new javax.swing.JButton();
         BCancFor = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de fornecedor");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do fornecedor"));
@@ -359,12 +359,23 @@ public class TCadastrarFornecedor extends javax.swing.JFrame {
         } 
         
         //tamanho maximo de caractres
-        if((TCEPFor.getText().length()>=14)&&(14!=-1)){ 
+        if((TCNPJFor.getText().length()>=14)&&(14!=-1)){ 
             evt.consume(); 
-            TCEPFor.setText(TCEPFor.getText().substring(0,14)); 
+            TCNPJFor.setText(TCNPJFor.getText().substring(0,14)); 
         }
     }//GEN-LAST:event_TCNPJForKeyTyped
 
+    public void setTextfild(Fornecedor fornecedor){
+    TNomeFor.setText(fornecedor.getNome_fornecedor());
+    TCNPJFor.setText(fornecedor.getCnpj());
+    TTelefoneFor.setText(fornecedor.getTelefone());
+    TBairroFor.setText(fornecedor.getEndereco().getBairro());
+    TCEPFor.setText(fornecedor.getEndereco().getCep());
+    TCidadeFor.setText(fornecedor.getEndereco().getCidade());
+    TCompFor.setText(fornecedor.getEndereco().getComplemento());
+    TLogFor.setText(fornecedor.getEndereco().getLongadouro());
+    TNunFor.setText(fornecedor.getEndereco().getNumero());
+    }
     /**
      * @param args the command line arguments
      */
