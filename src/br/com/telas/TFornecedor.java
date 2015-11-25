@@ -499,6 +499,11 @@ public class TFornecedor extends javax.swing.JFrame {
         });
 
         BExcluirFor.setText("Excluir");
+        BExcluirFor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BExcluirForActionPerformed(evt);
+            }
+        });
 
         BCancFor2.setText("Cancelar");
         BCancFor2.addActionListener(new java.awt.event.ActionListener() {
@@ -594,12 +599,21 @@ public class TFornecedor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TCNPJForActionPerformed
 //função para verificar se existe algum campo vazio
-    private boolean vazio(){
+    private boolean vazioPane1(){
     
         return (TCEPFor.getText().isEmpty()     ||  TBairroFor.getText().isEmpty()  ||
                 TCidadeFor.getText().isEmpty()  ||  TLogFor.getText().isEmpty()     ||
                 TNunFor.getText().isEmpty()     ||  TNomeFor.getText().isEmpty()    ||
                 TCNPJFor.getText().isEmpty()    ||  TTelefoneFor.getText().isEmpty());
+    }
+    
+//função para verificar se existe algum campo vazio
+    private boolean vazioPane2(){
+    
+        return (TCEPFor1.getText().isEmpty()     ||  TBairroFor1.getText().isEmpty()  ||
+                TCidadeFor1.getText().isEmpty()  ||  TLogFor1.getText().isEmpty()     ||
+                TNunFor1.getText().isEmpty()     ||  TNomeFor1.getText().isEmpty()    ||
+                TCNPJFor1.getText().isEmpty()    ||  TTelefoneFor1.getText().isEmpty());
     }
     
     //Função para limpar todos os campos do formulario
@@ -614,7 +628,19 @@ public class TFornecedor extends javax.swing.JFrame {
         TCNPJFor.setText("");
         TTelefoneFor.setText("");
         TCompFor.setText("");
+        TCEPFor1.setText("");
+        TBairroFor1.setText("");
+        TCidadeFor1.setText("");
+        TLogFor1.setText("");
+        TNunFor1.setText("");
+        TCompFor1.setText("");
+        TNomeFor1.setText("");
+        TCNPJFor1.setText("");
+        TTelefoneFor1.setText("");
+        TCompFor1.setText("");
+        TCNPJPesqFor.setText("");
     }
+    
     //função para preencher textfild
     private void setTextfild(Fornecedor fornecedor){
     TNomeFor1.setText(fornecedor.getNome_fornecedor());
@@ -663,7 +689,7 @@ public class TFornecedor extends javax.swing.JFrame {
 
     private void BCadasForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCadasForActionPerformed
 
-        if(!vazio()){
+        if(!vazioPane1()){
             //Obtendo valores dos textfild referente a endereço
             endereco.setCep(TCEPFor.getText());
             endereco.setBairro(TBairroFor.getText());
@@ -762,10 +788,9 @@ public class TFornecedor extends javax.swing.JFrame {
         //Fechando form
         this.dispose();
     }//GEN-LAST:event_BCancFor2ActionPerformed
-
-    private void BAtualizarForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAtualizarForActionPerformed
-            cfornecedor=new Controle_de_Fornecedor();
-        //Obtendo valores dos textfild referente a endereço
+    //Função que carrega os valores dos textfild em fornecedor e endereço
+    private void setEnderecoFornecedor(){
+            //Obtendo valores dos textfild referente a endereço
             endereco.setCep(TCEPFor1.getText());
             endereco.setBairro(TBairroFor1.getText());
             endereco.setCidade(TCidadeFor1.getText());
@@ -778,14 +803,33 @@ public class TFornecedor extends javax.swing.JFrame {
             fornecedor.setCnpj(TCNPJFor1.getText());
             fornecedor.setTelefone(TTelefoneFor1.getText());
             fornecedor.setEndereco(endereco);
-        
+    }
+    private void BAtualizarForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAtualizarForActionPerformed
+            cfornecedor=new Controle_de_Fornecedor();
+            setEnderecoFornecedor();        
+            if(!vazioPane2()){
             cfornecedor.setFornecedor(fornecedor);
             cfornecedor.setEndereco(endereco);
-            
             cfornecedor.atualizarFornecedor();
             cfornecedor.atualizarEndereco();
             JOptionPane.showMessageDialog(null, "Fornecedor alterado com sucesso!!");
+            LimparJtextfild();
+            }
+            else
+                JOptionPane.showMessageDialog(null, "Você deve preencher os campos com '*'");
+                
     }//GEN-LAST:event_BAtualizarForActionPerformed
+
+    private void BExcluirForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BExcluirForActionPerformed
+       cfornecedor=new Controle_de_Fornecedor();
+       setEnderecoFornecedor();
+       cfornecedor.setFornecedor(fornecedor);
+       cfornecedor.setEndereco(endereco);
+       cfornecedor.excluirFornecedor();
+       cfornecedor.excluirEndereco();
+       JOptionPane.showMessageDialog(null, "Fornecedor excluido com sucesso!!");
+       LimparJtextfild();
+    }//GEN-LAST:event_BExcluirForActionPerformed
 
     /**
      * @param args the command line arguments
