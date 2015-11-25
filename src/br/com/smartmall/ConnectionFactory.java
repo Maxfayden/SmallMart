@@ -9,7 +9,7 @@ public class ConnectionFactory {
 	private static final String USER = "root";
 	private static final String SENHA = "Sm@rtm@11";
 	
-	//Metodo que abre a conexão
+	//Metodo que abre a conexï¿½o
 	public Connection getConnection() {
 	     try {
 	         return DriverManager.getConnection(URL, USER, SENHA);
